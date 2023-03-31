@@ -5,11 +5,12 @@ include_once("../db.php");
 
 ?>
 
+
 <div class="content-body">
     <div class="col-12">
                         <div class="card">
                             <div class="card-header">
-                                <h4 class="card-title">Tabela dos Usuarios</h4>
+                                <h4 class="card-title">Tabela dos produtos</h4>
                             </div>
                             <div class="card-body">
                                 <div class="table-responsive">
@@ -17,41 +18,33 @@ include_once("../db.php");
                                         <thead>
                                             <tr>
                                                 
-                                                <th> ID </th>
-                                                <th> Nome </th>
-                                                <th> Contacto </th>
-                                                <th> E-mail</th>
-                                                <th> Username </th>
-                                                <th>Acções</th>
+                                            <th> ID </th>
+                                            <th> Codigo</th>
+                                            <th> Nome </th>
+                                            <th> Preço</th>
+						                      <th> Acções </th>
                                             </tr>
                                         </thead>
                                         <?php 
 							 // faz a seleção do dados na Tabela	
-								$data = mysqli_query ($conectar, "SELECT * FROM users");
+								$data = mysqli_query($conectar, "SELECT * FROM products");
 							 // lista os dados
 								while($value = mysqli_fetch_array($data)){
 									
-							/* PDO
-								$stmt = $pdo->prepare("SELECT * FROM users ORDER BY id DESC");
-								$stmt->execute();
-								$values = $stmt->fetchAll();
-								
-								foreach($values as $value) {
-							*/	
-											
-							?>
-                                        <tbody>
+									
+							?>	
+					  
+                      <tbody>
                         <tr class="table-info">
                           <td> <?php echo $value['id'] ?></td>
+                          <td> <?php echo $value['cod'] ?> </td>
                           <td> <?php echo $value['name'] ?> </td>
-                          <td> <?php echo $value['contact'] ?> </td>
-                          <td> <?php echo $value['email'] ?></td>
-                          <td> <?php echo $value['username'] ?> </td>
+                          <td> <?php echo $value['price'] ?></td>
 						  
 						  <!--  redireciona o botao editar e apagar para os repectivos ficheiros  -->
 						  <td>
 							<a class="btn btn-sm btn-info " href="edit.php?id=<?php echo $value['id']; ?>"> Editar </a> - 
-							<a class="btn btn-sm btn-danger " href="user/deleteQuery.php?id=<?php echo $value['id']; ?>">Apagar</a>
+							<a class="btn btn-sm btn-danger " href="product/deleteQuery.php?id=<?php echo $value['id']; ?>">Apagar</a>
 						  </td>
                         </tr>
 						<?php  }?>	
@@ -69,8 +62,6 @@ include_once("../db.php");
 
 </div>
 
-
-
 <?php
-include_once ('../footer.php');
+include_once("../footer.php");
 ?>
