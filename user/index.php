@@ -19,7 +19,7 @@ include_once ('../header.php');
                           <li><a href="#">Settings 1</a>
                           </li>
                           <li><a href="#">Settings 2</a>
-                          </li>
+                          </li> 
                         </ul>
                       </li>
                       <li><a class="close-link"><i class="fa fa-close"></i></a>
